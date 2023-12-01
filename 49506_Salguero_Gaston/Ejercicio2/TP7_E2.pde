@@ -1,5 +1,5 @@
-/*import processing.serial.*;
-Serial miPuerto;*/
+import processing.serial.*;
+Serial Puerto;
 
 //para entradas y salidas
 int grosorLinea = 2;
@@ -13,7 +13,7 @@ int anchoLed = 90;
 boolean E1, E2, L1, L2;
 
 void setup(){
-  //miPuerto = new Serial(this, "COM3", 9600);
+  Puerto = new Serial(this, "COM3", 9600);
   size(850, 450);
   background(#FFFFFF);
   strokeWeight(grosorLinea);
@@ -53,18 +53,17 @@ void draw(){
   if (mousePressed && mouseX<(width/2+anchoBoton) && mouseX>width/2 && mouseY<(height/5+altura) && mouseY>height/5){
    E1=!E1;
    L1=!L1;
-   //miPuerto.write('1');
+   Puerto.write('1');
    if(E1 == false){
      fill(#4ECE19); //E1
-     rect(width/2, height/5, anchoBoton, altura); 
-     
+     rect(width/2, height/5, anchoBoton, altura);  
    }  
   }
   //para E2
   if (mousePressed && mouseX<(width/1.4+anchoBoton) && mouseX>width/1.4 && mouseY<(height/5+anchoBoton) && mouseY>height/5){
     E2=!E2;
     L2=!L2;
-    //miPuerto.write('2');
+    Puerto.write('2');
     if (E2 == false){
       fill(#19279B); //E2
       rect(width/1.4, height/5, anchoBoton, altura);
